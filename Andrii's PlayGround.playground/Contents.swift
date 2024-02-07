@@ -218,14 +218,14 @@ func truckBackOnBaseAndDropGems() {
     }
     dropGems()
     if gemsInTruck == 0 {
-        ReturnToSavedCoordinates()
+        returnToSavedCoordinates()
     } else {
         print("gemsInTruck error")
     }
 }
 
 //After droping gems on base return to saved coordinates
-func ReturnToSavedCoordinates() {
+func returnToSavedCoordinates() {
     while currentCoordinates != savedReturnCoordinates {
         while !truck.isBlocked {
             truck.moveForward()
