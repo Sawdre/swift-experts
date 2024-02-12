@@ -1,6 +1,6 @@
 import Cocoa
 
-var isBlocked = Int().self
+var isBlocked = Int()
 
 func moveForward() {
     
@@ -11,27 +11,25 @@ func collectGem() {
 func object() {
     
 }
-class Object {
-    
-}
-let myObject = Object()
+
+
 class World {
-    func place(_ object: Object, atColumn column: Int, row: Int) {
-          
+    func place(_ object: Truck, column: Int, row: Int) {
+    
     }
 }
-class Truck: Object {
+
+class Truck {
     var isBlocked: Bool
     var isOnGem: Bool
     var isBlockedLeft: Bool
     var isBlockedRight: Bool
-    override init() {
+    init() {
         self.isBlocked = true
         self.isOnGem = true
         self.isBlockedLeft = true
         self.isBlockedRight = true
-        super.init()
-        }
+    }
     func turnRight() {
         
     }
@@ -42,22 +40,6 @@ class Truck: Object {
         
     }
     func collectGem(){
-        
-    }
-}
-class Expert: Object {
-    var isBlocked: Bool
-    override init() {
-        self.isBlocked = true
-        super.init()
-        }
-    func turnRight() {
-        
-    }
-    func moveForward() {
-        
-    }
-    func turnLeft() {
         
     }
     func move(distance: Int) {
@@ -97,7 +79,7 @@ let base = (column: 0, row: 0)
 let truck = Truck()
 
 //Scout is here for measure the lenght of row so we can calculate size of the map
-let scout = Expert()
+let scout = Truck()
 
 //Truck turn on 180 degree
 func truckTurnAround() {
@@ -113,8 +95,9 @@ func scoutTurnAround() {
 
 //Move a given distance
 func move(distance: Int) {
-    for _ in 1...distance {
+    for i in 1...distance {
         moveForward()
+        print(i)
     }
 }
 
@@ -248,8 +231,8 @@ func returnToSavedCoordinates() {
 
 //Rabotai, Pozaluista 🥹
 
-world.place(scout, atColumn: base.column, row: base.row)
-world.place(truck, atColumn: base.column, row: base.row)
+world.place(scout, column: base.column, row: base.row)
+world.place(truck, column: base.column, row: base.row)
 
 scoutMeasureRowLength()
 
@@ -260,3 +243,6 @@ let numberOfGems = Int.random(in: 1...mapSize)
 while gemsOnBase < numberOfGems {
     truckGoThroughtRow()
 }
+
+
+//Разделить scout и truck на разные классы (без дублирования кода), Array - изучить, ООП - почитать, 
